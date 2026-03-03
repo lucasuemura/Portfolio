@@ -1,1 +1,3 @@
-2° entrega de atividade Front-End | Portfólio simples sobre mim, feito em HTML, CSS e um pouco de Javascript.
+<h1>2° entrega de atividade Front-End (25/02)</h1>
+<h2>Portfólio sobre mim, feito em HTML, CSS e um pouco de JavaScript.</h2>
+<p>O portfólio será atualizado conforme novos projetos forem desenvolvidos e minhas habilidades em front-end evoluírem.</p>
