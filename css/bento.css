@@ -53,6 +53,15 @@
 .cell__sub { margin-top: 8px; font-size: var(--t-sm); }
 .cell__sub.mono { font-size: var(--t-xs); color: var(--meta); }
 
+.portrait { display: flex; align-items: center; gap: 20px; }
+.portrait[hidden] { display: none; }
+.avatar--big { width: clamp(96px, 11vw, 132px); height: clamp(96px, 11vw, 132px); }
+.cell--bio:hover .avatar--big { box-shadow: 0 0 0 1px var(--white), 0 0 0 7px var(--obsidian), 0 0 0 8px var(--line-hi); }
+.avatar--big:hover img { scale: 1.08; }
+.portrait figcaption { display: grid; gap: 4px; }
+.portrait__name { font-family: var(--f-display); font-weight: 700; font-size: var(--t-lg); color: var(--white); letter-spacing: -0.02em; }
+.portrait__handle { justify-self: start; font-family: var(--f-mono); font-size: var(--t-xs); }
+
 .bio {
   font-family: var(--f-display); font-weight: 600;
   font-size: clamp(1.4rem, 2.6vw, 2.2rem); line-height: 1.18; letter-spacing: -0.025em;

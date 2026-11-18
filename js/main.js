@@ -26,6 +26,20 @@
   PF.initProjects({ root: $('[data-groups]'), filtersEl: $('[data-filters]'), slabEl: $('[data-slab]') });
 
   const first = PF.initialRepos(user);
+
+  // Foto: imagens/perfil.jpg → avatar do GitHub → esconde o espaço
+  function initAvatar() {
+    const sources = ['imagens/perfil.jpg', `https://github.com/${user}.png?size=320`];
+    document.querySelectorAll('img[data-avatar]').forEach((img) => {
+      const wrap = img.closest('[data-avatar-wrap]');
+      let i = 0;
+      img.addEventListener('load', () => { wrap.hidden = false; });
+      img.addEventListener('error', () => { if (++i < sources.length) img.src = sources[i]; else wrap.hidden = true; });
+      img.src = sources[0];
+    });
+  }
+  initAvatar();
+
   PF.renderProjects(first.repos);
   PF.renderAbout(first.repos);
   source.textContent = first.source === 'cache'
