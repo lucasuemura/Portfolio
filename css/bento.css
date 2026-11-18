@@ -55,7 +55,7 @@
 
 .portrait { display: flex; align-items: center; gap: 20px; }
 .portrait[hidden] { display: none; }
-.avatar--big { width: clamp(96px, 11vw, 132px); height: clamp(96px, 11vw, 132px); }
+.avatar--big { width: clamp(88px, 9vw, 112px); height: clamp(88px, 9vw, 112px); }
 .cell--bio:hover .avatar--big { box-shadow: 0 0 0 1px var(--white), 0 0 0 7px var(--obsidian), 0 0 0 8px var(--line-hi); }
 .avatar--big:hover img { scale: 1.08; }
 .portrait figcaption { display: grid; gap: 4px; }
