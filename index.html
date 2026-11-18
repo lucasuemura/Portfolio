@@ -20,7 +20,16 @@
   <link rel="stylesheet" href="css/social.css">
   <link rel="stylesheet" href="css/cursor.css">
 
-  <script type="module" src="js/main.js"></script>
+  <!-- Scripts clássicos (sem módulos): o site funciona até abrindo o index.html direto -->
+  <script src="data/repos.js" defer></script>
+  <script src="data/profile.js" defer></script>
+  <script src="js/lib.js" defer></script>
+  <script src="js/github.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/interactions.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+  <script src="js/about.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#projetos">Pular para os projetos</a>
@@ -43,8 +52,8 @@
       <div class="hero__spot" aria-hidden="true"></div>
 
       <h1 class="hero__name" aria-label="Lucas Uemura">
-        <span class="mask"><span class="mask__line" style="--i:0">Lucas</span></span>
-        <span class="mask"><span class="mask__line" style="--i:1">Uemura</span></span>
+        <span class="mask"><span class="mask__line" style="--i:0" data-split>Lucas</span></span>
+        <span class="mask"><span class="mask__line" style="--i:1" data-split>Uemura</span></span>
       </h1>
 
       <div class="hero__foot">
@@ -73,31 +82,29 @@
 
     <!-- PROJETOS -->
     <section class="section projects" id="projetos" aria-labelledby="projetos-titulo">
-      <header class="section__head">
-        <h2 class="section__title" id="projetos-titulo">Projetos</h2>
+      <header class="section__head" data-reveal>
+        <h2 class="section__title" id="projetos-titulo" data-split>Projetos</h2>
         <p class="section__note">
-          Tudo o que está público no meu GitHub, do commit mais recente ao mais antigo.
+          Tudo o que está público no meu GitHub (<span data-split-count></span>), do commit mais recente ao mais antigo.
           <span class="section__source" data-source></span>
         </p>
       </header>
 
-      <div class="filters" role="toolbar" aria-label="Filtrar por linguagem" data-filters>
+      <div class="filters" role="toolbar" aria-label="Filtrar por linguagem" data-filters data-reveal>
         <span class="filters__slab" aria-hidden="true" data-slab></span>
       </div>
 
-      <ol class="plist" data-plist aria-live="polite">
-        <li class="plist__loading">Carregando repositórios…</li>
-      </ol>
+      <div class="pgroups" data-groups aria-live="polite"></div>
     </section>
 
     <!-- SOBRE / STACK -->
     <section class="section about" id="sobre" aria-labelledby="sobre-titulo">
-      <header class="section__head">
-        <h2 class="section__title" id="sobre-titulo">Sobre</h2>
+      <header class="section__head" data-reveal>
+        <h2 class="section__title" id="sobre-titulo" data-split>Sobre</h2>
       </header>
 
       <div class="bento">
-        <article class="cell cell--bio">
+        <article class="cell cell--bio lit" data-reveal style="--d:0">
           <p class="bio">
             Estudante de Análise e Desenvolvimento de Sistemas na Universidade Cesumar. Estou sempre em evolução na área de tecnologia, estudando continuamente e buscando novos desafios.
           </p>
@@ -108,25 +115,25 @@
           </ul>
         </article>
 
-        <article class="cell cell--place">
+        <article class="cell cell--place lit" data-reveal style="--d:1">
           <h3 class="cell__k">Onde estou</h3>
           <p class="cell__big">Maringá, PR</p>
           <p class="cell__sub" data-clock>Brasil</p>
         </article>
 
-        <article class="cell cell--school">
+        <article class="cell cell--school lit" data-reveal style="--d:2">
           <h3 class="cell__k">Formação</h3>
           <p class="cell__big">Cesumar</p>
           <p class="cell__sub">Análise e Desenvolvimento de Sistemas</p>
         </article>
 
-        <article class="cell cell--latest">
+        <article class="cell cell--latest lit" data-reveal style="--d:3">
           <h3 class="cell__k">Último commit</h3>
           <p class="cell__big" data-latest-name>—</p>
           <p class="cell__sub mono" data-latest-when></p>
         </article>
 
-        <article class="cell cell--stack">
+        <article class="cell cell--stack lit" data-reveal style="--d:4">
           <h3 class="cell__k">Linguagens nos repositórios</h3>
           <div class="langbar" data-langbar role="img" aria-label="Distribuição de linguagens"></div>
           <ul class="pills" data-pills></ul>
@@ -136,23 +143,10 @@
 
     <!-- REDES SOCIAIS -->
     <section class="section social" id="redes" aria-labelledby="redes-titulo">
-      <header class="section__head">
-        <h2 class="section__title" id="redes-titulo">Redes sociais</h2>
+      <header class="section__head" data-reveal>
+        <h2 class="section__title" id="redes-titulo" data-split>Redes sociais</h2>
       </header>
-
       <ul class="slist" data-social></ul>
-
-      <div class="copy">
-        <span class="copy__url mono">github.com/lucasuemura</span>
-        <button class="mag copy__btn" type="button" data-copy="https://github.com/lucasuemura" data-magnetic data-cursor="Copiar">
-          <span class="mag__fill" aria-hidden="true"></span>
-          <span class="mag__label copy__label">
-            <span class="copy__state copy__state--idle">Copiar link do GitHub</span>
-            <span class="copy__state copy__state--done" aria-hidden="true">Copiado!</span>
-          </span>
-        </button>
-        <span class="visually-hidden" role="status" data-copy-status></span>
-      </div>
     </section>
   </main>
 

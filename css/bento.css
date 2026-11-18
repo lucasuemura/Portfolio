@@ -16,6 +16,26 @@
   transition: background-color .4s var(--ease-out);
 }
 .cell:hover { background: var(--charcoal); }
+.cell { --mouse-x: 50%; --mouse-y: 50%; overflow: hidden; isolation: isolate; transition: background-color .4s var(--ease-out), scale .25s var(--ease-out); }
+.cell::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(380px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,.075), transparent 65%);
+  opacity: 0; transition: opacity .4s var(--ease-out);
+}
+.cell::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; padding: 1px;
+  background: radial-gradient(240px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,.55), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0; transition: opacity .4s var(--ease-out);
+}
+.cell:hover::before, .cell:hover::after, .cell.is-touched::before, .cell.is-touched::after { opacity: 1; }
+.cell:active { scale: .985; }
+.cell__big { transition: translate .55s var(--ease-spring); }
+.cell:hover .cell__big { translate: 6px 0; }
+.cell__k { transition: color .3s; }
+.cell:hover .cell__k { color: var(--support); }
 
 .cell--bio    { grid-column: span 4; grid-row: span 2; justify-content: space-between; gap: 40px; }
 .cell--place  { grid-column: span 2; }
@@ -40,7 +60,8 @@
   max-width: 26ch;
 }
 .roles { display: flex; flex-wrap: wrap; gap: 4px 28px; font-size: var(--t-sm); }
-.roles li { color: var(--support); }
+.roles li { color: var(--support); transition: color .3s, translate .5s var(--ease-spring); }
+.roles li:hover { color: var(--white); translate: 0 -3px; }
 
 /* Barra de distribuição em degraus de luminância */
 .langbar { display: flex; height: 10px; gap: 2px; }
@@ -56,7 +77,9 @@
 @keyframes grow { from { transform: scaleX(0); } }
 
 .pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.pills .glow { height: 34px; cursor: default; }
+.pills .glow { height: 34px; }
+.pills .glow:hover { translate: 0 -2px; }
+.pills .glow { transition: color .35s var(--ease-out), border-color .35s var(--ease-out), scale .18s var(--ease-out), translate .45s var(--ease-spring); }
 .pills .swatch { width: 8px; height: 8px; border-radius: 50%; background: var(--tone); flex: none; }
 
 @media (max-width: 900px) {
